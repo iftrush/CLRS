@@ -16,7 +16,8 @@ def BucketSort(A): # 0 <= A[0...n-1] < 1
 
     n = len(A)
     B = []
-    
+
+    # B as a LinkedList
     for i in range(n):
         B.append([])
 
