@@ -13,14 +13,19 @@ def InsertionSort(A):
 
 # BUCKET-SORT
 def BucketSort(A): # 0 <= A[0...n-1] < 1
+
     n = len(A)
     B = []
+    
     for i in range(n):
         B.append([])
+
     for i in range(n):
         B[floor(n*A[i])].append(A[i])
+
     for i in range(n):
         InsertionSort(B[i])
+
     # Concatenate B into A
     k = 0
     for i in B:
