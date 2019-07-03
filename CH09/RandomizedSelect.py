@@ -55,7 +55,6 @@ def RandomizedSelectIter(A, p, r, i):
 
     
 # DRIVER
-
 A = [i for i in range(100)]
 MIN = RandomizedSelect(A, 0, len(A)-1, 50)
 print(MIN)
