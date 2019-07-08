@@ -29,7 +29,7 @@ class Stack:
     # PUSH
     def push(self,x):
 
-        if self.top == self.size:
+        if (self.top + 1) == self.size:
             raise Full("Stack Overflow")
         else:
             self.top += 1
@@ -61,3 +61,4 @@ for i in range(100):
     B.push(A.pop())
 print(B.peak())
 print(len(B))
+B.push(0)
