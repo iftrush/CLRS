@@ -11,9 +11,9 @@ class Full(Exception):
 class Stack:
 
     # CONSTRUCTOR
-    def __init__(self, size = 100):
-        self.size = size
-        self.S = [0] * size
+    def __init__(self, capacity = 100):
+        self.capacity = capacity
+        self.S = [0] * capacity
         self.top = -1
 
     # METHOD OVERRIDING
@@ -29,7 +29,7 @@ class Stack:
     # PUSH
     def push(self,x):
 
-        if (self.top + 1) == self.size:
+        if (self.top + 1) == self.capacity:
             raise Full("Stack Overflow")
         else:
             self.top += 1
