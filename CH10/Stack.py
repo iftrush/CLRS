@@ -1,17 +1,14 @@
 # ERROR
-class Empty(Exception):
+class Empty(Exception): pass
 
-    pass
-
-class Full(Exception):
-
-    pass
+class Full(Exception): pass
 
 # STACK
 class Stack:
 
     # CONSTRUCTOR
     def __init__(self, capacity = 100):
+        
         self.capacity = capacity
         self.S = [None] * capacity
         self.top = -1

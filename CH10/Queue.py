@@ -1,28 +1,37 @@
 # ERROR
-class Empty(Exception):
-    pass
+class Empty(Exception): pass
 
 # QUEUE
 class Queue:
 
     # CONSTRUCTOR
     def __init__(self, capacity = 100):
+
         self.capacity = capacity
         self.head = self.size = 0
         self.Q = [None] * capacity
     
     # METHOD OVERRIDING
     def __len__(self):
+
         return self.size
+    
+    # METHOD OVERRIDING
+    def __str__(self):
+
+        return str(self.Q)
 
     # QUEUE-EMPTY
     def isEmpty(self):
+
         return self.size == 0
     
     # FRIST
     def first(self):
+
         if self.isEmpty():
             raise Empty("Queue Underflow")
+
         return self.Q[self.head]
     
     # DEQUEUE
@@ -34,6 +43,7 @@ class Queue:
         self.Q[self.head] = None
         self.head = (self.head + 1) % len(self.Q)
         self.size -= 1
+
         return x
     
     # ENQUEUE
@@ -61,7 +71,7 @@ A = Queue()
 B = Queue()
 for i in range(200):
     A.enqueue(i)
-print(A.Q)
+print(A)
 for i in range(len(A)):
     B.enqueue(A.dequeue())
-print(B.Q)
+print(B)
