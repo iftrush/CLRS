@@ -6,7 +6,7 @@ class Full(Exception): pass
 class Queue:
 
     # CONSTRUCTOR
-    def __init__(self, capacity = 100, head = 0, tail = 0):
+    def __init__(self, capacity = 100, head = -1, tail = 0):
 
         self.head = head
         self.tail = tail
@@ -27,24 +27,25 @@ class Queue:
     # QUEUE-EMPTY
     def isEmpty(self):
 
-        return True if (self.head == self.tail) and (self.Q[0] == None) else False
+        return True if self.head == -1 else False
     
     # QUEUE-FULL
     def isFull(self):
 
-        return True if (self.head == self.tail) and (self.Q[0] != None) else False
+        return True if self.head == (self.tail + 1) % self.capacity else False
     
     # ENQUEUE
     def enqueue(self, x):
 
         if self.isFull(): raise Full("Queue Overflow")
         else:
-
-            self.Q[self.tail] = x
-            if (self.tail + 1) == len(self.Q):
+            if self.head == -1:
+                self.head = 0
+            elif self.tail == self.capacity:
                 self.tail = 0
             else:
                 self.tail += 1
+            self.Q[self.tail] = x
 
     # DEQUEUE
     def dequeue(self):
@@ -52,12 +53,13 @@ class Queue:
         if self.isEmpty(): raise Empty("Queue Underflow")
         else:
             x = self.Q[self.head]
-            self.Q[self.head] = None
-            if (self.head + 1) == len(self.Q):
-                self.head = 0
+            if self.head == self.tail:
+                self.head = -1
             else:
-                self.head += 1
-                
+                if self.head == self.capacity-1:
+                    self.head = 0
+                else:
+                    self.head += 1
             return x
 
 # DRIVER
