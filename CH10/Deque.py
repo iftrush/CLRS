@@ -113,5 +113,3 @@ D.popL()
 print(D)
 D.popR()
 print(D)
-
-
